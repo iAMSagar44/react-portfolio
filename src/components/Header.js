@@ -34,7 +34,6 @@ const socials = [
 
 const Header = () => {
   const handleClick = (anchor) => () => {
-    console.log("inside handle click")
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
     if (element) {
