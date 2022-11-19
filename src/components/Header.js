@@ -33,6 +33,39 @@ const socials = [
 ];
 
 const Header = () => {
+
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    let previousScrollPos = window.scrollY;
+    console.log("prev position", previousScrollPos);
+
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      console.log("current position", currentScrollPos);
+      const headerElement = headerRef.current;
+      console.log("header element", headerElement.style);
+      if (!headerElement) {
+        return;
+      }
+      if (previousScrollPos > currentScrollPos) {
+        headerElement.style.transform = "translateY(0)"
+      } else {
+        headerElement.style.transform = "translateY(-200px)"
+      }
+      previousScrollPos = currentScrollPos;
+
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    //clean up effect
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
+
+  }, [])
+
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
@@ -55,6 +88,7 @@ const Header = () => {
       transitionDuration=".3s"
       transitionTimingFunction="ease-in-out"
       backgroundColor="#18181b"
+      ref={headerRef}
     >
       <Box color="white" maxWidth="1280px" margin="0 auto">
         <HStack
@@ -68,9 +102,9 @@ const Header = () => {
             <HStack spacing={6}>
               {
                 socials.map(s =>
-                    <a key={s.url} href={s.url}>
-                      <FontAwesomeIcon icon={s.icon} size="2x" />
-                    </a>
+                  <a key={s.url} href={s.url}>
+                    <FontAwesomeIcon icon={s.icon} size="2x" />
+                  </a>
                 )
               }
             </HStack>
