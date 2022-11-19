@@ -22,7 +22,7 @@ const LandingSection = () => {
   const { onOpen } = useAlertContext();
 
   useEffect(() => {
-    console.log("response object has changed", response);
+    //console.log("response object has changed", response);
     if (response) {
       onOpen(response.type, response.message)
     }
@@ -32,7 +32,7 @@ const LandingSection = () => {
     initialValues: {
       firstName: '',
       email: '',
-      type: '',
+      type: 'hireMe',
       comment: ''
     },
     validationSchema: Yup.object({
@@ -42,14 +42,18 @@ const LandingSection = () => {
         .max(50, 'Must be less than 50 characters').required('Required')
     }),
     onSubmit: (values, actions) => {
+      console.log(values);
       submit("http://localhost", values).then(() =>
+      { 
+        //console.log("initial response", response);
         actions.resetForm({
           firstName: '',
           email: '',
           type: '',
           comment: ''
         }
-        ))
+        )}
+       )
       //alert(JSON.stringify(values, null, 2));
     }
   });
