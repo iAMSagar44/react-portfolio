@@ -39,7 +39,7 @@ const LandingSection = () => {
       firstName: Yup.string().required('Required'),
       email: Yup.string().email('Invalid email address').required('Required'),
       comment: Yup.string().min(1, 'Required. Must be 50 characters or less')
-        .max(50, 'Must be less than 50 characters').required('Required')
+        .max(200, 'Must be less than 200 characters').required('Required')
     }),
     onSubmit: (values, actions) => {
       console.log(values);
@@ -98,7 +98,7 @@ const LandingSection = () => {
               </FormControl>
               <FormControl>
                 <FormLabel htmlFor="type">Type of enquiry</FormLabel>
-                <Select id="type" name="type" color='black' fontWeight='bold' size='md'
+                <Select id="type" name="type" color='white' fontWeight='bold' size='md'
                   {...formik.getFieldProps('type')}>
                   <option value="hireMe">Freelance project proposal</option>
                   <option value="openSource">
