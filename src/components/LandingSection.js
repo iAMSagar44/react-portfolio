@@ -2,9 +2,9 @@ import React from "react";
 import { Avatar, Heading, VStack } from "@chakra-ui/react";
 import FullScreenSection from "./FullScreenSection";
 
-const greeting = "Hello, I am Pete!";
-const bio1 = "A frontend developer";
-const bio2 = "specialised in React";
+const greeting = "Hello, I am Sagar!";
+const bio1 = "A fullstack developer";
+const bio2 = "specialised in React and Springboot";
 const imgURL = "https://i.pravatar.cc/150?img=7";
 
 // Implement the UI for the LandingSection component according to the instructions.
